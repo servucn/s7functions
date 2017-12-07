@@ -475,7 +475,7 @@ public class S7TCPConnection {
 		case "Integer":
 			packageArray = S7DInt.ToByteArray((int) value);
 			break;
-		case "Folat":
+		case "Float":
 			packageArray = S7Real.ToByteArray((Float) value);
 			break;
 		case "Byte[]":
