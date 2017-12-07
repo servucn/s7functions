@@ -3,20 +3,11 @@ package com.cn.ucasp.net.types;
 public class S7Real {
 
 	public static float FromByteArray(byte[] bytes) {
-		byte v1 = bytes[0];
-		byte v2 = bytes[1];
-		byte v3 = bytes[2];
-		byte v4 = bytes[3];
-
-		if ((int) (v1 & 0xff + v2 & 0xff + v3 & 0xff + v4 & 0xff) == 0) {
-			return 0.0f;
-		} else {
+		
 			final int iValue = ((bytes[3] & 0xFF) << 0) | ((bytes[2] & 0xFF) << 8) | ((bytes[1] & 0xFF) << 16)
 					| ((bytes[0] & 0xFF) << 24);
-
 			return Float.intBitsToFloat(iValue);
-
-		}
+		
 	}
 
 	public static float FromDWord(int value) {

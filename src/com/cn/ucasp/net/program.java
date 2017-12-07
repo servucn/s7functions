@@ -11,9 +11,14 @@ public class program {
 	        b[i] = (byte) (fbit >> (24 - i * 8));    
 	    }   
 		S7TCPConnection connection = new S7TCPConnection()
-				.withIp("127.0.0.1")
+				.withIp("192.168.72.146")
 				.Open();
-		connection.Write("DB1.DBB0","1");		
+		Object d=connection.Read("DB1.DBD2");
+		
+		System.out.print(d);
+		Object by=connection.Read(DataType.DataBlock, 1, 2,VarType.S7Real, 1);
+		System.out.print(by);
+		/*connection.Write("DB1.DBB0","1");		
 		Object in=connection.Read("DB1.DBB0");
 		System.out.println(in);
 		
@@ -34,6 +39,8 @@ public class program {
 		
 		Object object=connection.Read(DataType.DataBlock, 2, 0, VarType.S7Real, 1);
 		System.out.println(connection.getErrorCode());
-		System.out.println(object);
+		
+		System.out.println(object);*/
 	}
+
 }
