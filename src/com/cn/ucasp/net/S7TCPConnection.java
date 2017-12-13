@@ -114,10 +114,10 @@ public class S7TCPConnection {
 			bSend1[18] = (byte) (rack * 2 * 16 + slot);
 			break;
 		case S71500:
-			bSend1[11] = (byte) 194;
+			bSend1[11] = (byte) 193;
 			bSend1[12] = 2;
-			bSend1[13] = 1;
-			bSend1[14] = 0;
+			bSend1[13] = 16;
+			bSend1[14] = 2;
 			bSend1[15] = (byte) 194;
 			bSend1[16] = 2;
 			bSend1[17] = 3;
@@ -140,8 +140,11 @@ public class S7TCPConnection {
 			errorCode = ErrorCode.WrongNumberReceivedBytes;
 			return this;
 		}
+		//byte[] bSend2 = { 3, 0, 0, 25, 2, (byte) 240, (byte) 128, 50, 1, 0, 0, (byte) 255, (byte) 255, 0, 8, 0, 0,
+			//	(byte) 240, 0, 0, 3, 0, 3, 1, 0 };
 		byte[] bSend2 = { 3, 0, 0, 25, 2, (byte) 240, (byte) 128, 50, 1, 0, 0, (byte) 255, (byte) 255, 0, 8, 0, 0,
-				(byte) 240, 0, 0, 3, 0, 3, 1, 0 };
+				(byte) 240, 0, 0,1, 0, 1, 7, (byte)128 };
+
 		out.write(bSend2);
 		if (in.read(bReceive) != 27) {
 			errorCode = ErrorCode.WrongNumberReceivedBytes;
