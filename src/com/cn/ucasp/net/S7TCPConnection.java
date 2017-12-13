@@ -133,17 +133,15 @@ public class S7TCPConnection {
 		socket.setTcpNoDelay(true);
 		out = socket.getOutputStream();
 		in = socket.getInputStream();
-		//  ‰≥ˆ«Î«Û
+		
 		out.write(bSend1);
 
 		if (in.read(bReceive) != 22) {
 			errorCode = ErrorCode.WrongNumberReceivedBytes;
 			return this;
 		}
-		//byte[] bSend2 = { 3, 0, 0, 25, 2, (byte) 240, (byte) 128, 50, 1, 0, 0, (byte) 255, (byte) 255, 0, 8, 0, 0,
-			//	(byte) 240, 0, 0, 3, 0, 3, 1, 0 };
 		byte[] bSend2 = { 3, 0, 0, 25, 2, (byte) 240, (byte) 128, 50, 1, 0, 0, (byte) 255, (byte) 255, 0, 8, 0, 0,
-				(byte) 240, 0, 0,1, 0, 1, 7, (byte)128 };
+				(byte) 240, 0, 0, 3, 0, 3, 1, 0 };
 
 		out.write(bSend2);
 		if (in.read(bReceive) != 27) {
