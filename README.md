@@ -1,6 +1,9 @@
 # s7functions
 西门子PLC 通信协议
 
+```C#
+
+
 S7TCPConnection connection = new S7TCPConnection()
 				.withIp("192.168.72.146") //plc ip地址
 				.withSolt(1) //安装槽
@@ -18,3 +21,4 @@ S7TCPConnection connection = new S7TCPConnection()
 		System.out.println(by);
 		System.out.println(by2);
 		/*connection.Write("DB1.DBB0","1");		
+```
