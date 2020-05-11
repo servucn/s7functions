@@ -1,7 +1,7 @@
 # s7functions
 西门子PLC 通信协议
 
-```C#
+```java
 
 
 S7TCPConnection connection = new S7TCPConnection()
